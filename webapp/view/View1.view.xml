@@ -1,0 +1,88 @@
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="FullScreenApp.controller.View1">
+	<App id="idAppControl">
+		<pages>
+			<Page title="Satınalma Giriş Sayfası">
+				<content>
+					<VBox direction="Column" id="vbox0" justifyContent="Center" width="auto">
+						<items>
+							<HBox alignItems="Center" class="sapUiSmallMargin">
+								<Label text="Satınalma No:" textAlign="Center" width="auto" class="sapUiTinyMarginBeginEnd"/>
+								<Input value="{viewModel>/PoNumber}" width="auto" class="sapUiTinyMarginBeginEnd"/>
+								<Label text="Satıcı No:" textAlign="Center" width="auto" class="sapUiTinyMarginBeginEnd"/>
+								<Input value="{viewModel>/Lifnr}" width="auto" class="sapUiTinyMarginBeginEnd"/>
+								<Label text="Para Birimi:" textAlign="Center" width="auto" class="sapUiTinyMarginBeginEnd"/>
+								<Input value="{viewModel>/Waers}" width="auto" class="sapUiTinyMarginBeginEnd"/>
+								<Label text="Şirket Kodu:" textAlign="Center" width="auto" class="sapUiTinyMarginBeginEnd"/>
+								<Input value="{viewModel>/Bukrs}" width="auto" class="sapUiTinyMarginBeginEnd"/>
+							</HBox>
+							<HBox alignItems="Center" class="sapUiSmallMargin">
+								<Button icon="sap-icon://save" text="Ekle" press="onAddPurchaseOrder" width="150px"></Button>
+							</HBox>
+						</items>
+					</VBox>
+					<Table id="table0" items="{/PurchaseOrderSet}" noDataText="Listelenecek veri yok!">
+						<headerToolbar>
+							<Toolbar>
+								<content>
+									<Title text="Satınalmalar" level="H2"/>
+									<!--<ToolbarSpacer/>-->
+									<!--<ComboBox id="idPopinLayout" placeholder="Popin layout options" change="onPopinLayoutChanged">-->
+									<!--	<items>-->
+									<!--		<core:Item text="Block" key="Block"/>-->
+									<!--		<core:Item text="Grid Large" key="GridLarge"/>-->
+									<!--		<core:Item text="Grid Small" key="GridSmall"/>-->
+									<!--	</items>-->
+									<!--</ComboBox>-->
+									<!--<MultiComboBox id="idSticky" placeholder="Sticky options" selectionFinish="onSelectionFinish" width="15%">-->
+									<!--	<layoutData>-->
+									<!--		<ToolbarLayoutData minWidth="4rem"/>-->
+									<!--	</layoutData>-->
+									<!--	<items>-->
+									<!--		<core:Item text="Column headers" key="ColumnHeaders"/>-->
+									<!--		<core:Item text="Header Toolbar" key="HeaderToolbar"/>-->
+									<!--		<core:Item text="Info Toolbar" key="InfoToolbar"/>-->
+									<!--	</items>-->
+									<!--</MultiComboBox>-->
+									<!--<ToggleButton id="toggleInfoToolbar" text="Hide/Show InfoToolbar" press="onToggleInfoToolbar"/>-->
+								</content>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column id="column0">
+								<header>
+									<Label id="label0" text="Satınalma No"/>
+								</header>
+							</Column>
+							<Column id="column1">
+								<header>
+									<Label id="label1" text="Satıcı No"/>
+								</header>
+							</Column>
+							<Column id="column2">
+								<header>
+									<Label id="label2" text="Para Birimi"/>
+								</header>
+							</Column>
+							<Column id="column3">
+								<header>
+									<Label id="label3" text="Şirket Kodu"/>
+								</header>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem counter="0" id="item1">
+								<cells>
+									<Text id="text5" maxLines="0" text="{Ponumber}"/>
+									<Text id="text6" maxLines="0" text="{Lifnr}"/>
+									<Text id="text8" maxLines="0" text="{Waers}"/>
+									<Text id="text9" maxLines="0" text="{Bukrs}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
