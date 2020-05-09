@@ -1,8 +1,9 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/model/json/JSONModel",
-	"sap/m/MessageToast"
-], function (Controller, JSONModel, MessageToast) {
+	"sap/m/MessageToast",
+	"sap/m/MessageBox"
+], function (Controller, JSONModel, MessageToast, MessageBox) {
 	"use strict";
 
 	return Controller.extend("FullScreenApp.controller.View1", {
@@ -31,7 +32,8 @@ sap.ui.define([
 			var oModel = this._oView.getModel(),
 				sPath = "/PurchaseOrderSet",
 				oData = {},
-				mParameters = {};
+				mParameters = {},
+				bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
 
 			oData.Ponumber = this._oView.getModel("viewModel").getProperty("/PoNumber");
 			oData.Lifnr = this._oView.getModel("viewModel").getProperty("/Lifnr");
@@ -44,12 +46,23 @@ sap.ui.define([
 				oBinding.filter([]);
 				// var msg = "Kayıt Başarılı";
 				// MessageToast.show(msg);
+
+				MessageBox.success(
+					"Satınalma oluşturuldu", {
+						styleClass: bCompact ? "sapUiSizeCompact" : ""
+					}
+				);
 			}.bind(this);
 
 			mParameters.error = function (oError) {
 				debugger;
-				var msg = "Kaydedilemedi!";
-				MessageToast.show(msg);
+				//var msg = "Kaydedilemedi!";
+				//MessageToast.show(msg);
+				MessageBox.error(
+					"Satınalma Başarısız", {
+						styleClass: bCompact ? "sapUiSizeCompact" : ""
+					}
+				);
 			};
 
 			oModel.create(sPath, oData, mParameters);
