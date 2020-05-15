@@ -67,6 +67,47 @@ sap.ui.define([
 
 			oModel.create(sPath, oData, mParameters);
 
+		},
+
+		onDeletePurchaseOrder: function () {
+
+			debugger;
+
+			var oModel = this._oView.getModel(),
+				sPath = "/PurchaseOrderSet",
+				oData = {},
+				mParameters = {},
+				bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
+
+			oData.Ponumber = this._oView.getModel("viewModel").getProperty("/PoNumber");
+			oData.Lifnr = this._oView.getModel("viewModel").getProperty("/Lifnr");
+			oData.Waers = this._oView.getModel("viewModel").getProperty("/Waers");
+			oData.Bukrs = this._oView.getModel("viewModel").getProperty("/Bukrs");
+
+			mParameters.success = function (oData2, oResponse) {
+				debugger;
+				var oBinding = this._oTable.getBinding("items");
+				oBinding.filter([]);
+
+				MessageBox.success(
+					"Satınalma Silme İşlemi Başarılı", {
+						styleClass: bCompact ? "sapUiSizeCompact" : ""
+					}
+				);
+			}.bind(this);
+
+			mParameters.error = function (oError) {
+				debugger;
+
+				MessageBox.error(
+					"Satınalma Silme Başarısız", {
+						styleClass: bCompact ? "sapUiSizeCompact" : ""
+					}
+				);
+			};
+
+			oModel.delete(sPath, oData, mParameters);
+
 		}
 
 	});

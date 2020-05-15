@@ -18,6 +18,7 @@
 							</HBox>
 							<HBox alignItems="Center" class="sapUiSmallMargin">
 								<Button icon="sap-icon://save" text="Ekle" press="onAddPurchaseOrder" width="150px"></Button>
+								<Button icon="sap-icon://delete" text="Sil" press="onDeletePurchaseOrder" width="150px" class="sapUiTinyMarginBeginEnd"></Button>
 							</HBox>
 						</items>
 					</VBox>
